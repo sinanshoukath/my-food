@@ -29,53 +29,47 @@
       android:layout_height="wrap_content"
       android:orientation="vertical">
 
-
       <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-          android:id="@+id/header"
-          android:layout_width="match_parent"
+        <TextView
+          android:id="@+id/tv_home"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:text="@string/home"
           android:layout_marginStart="30dp"
           android:layout_marginTop="10dp"
-          android:layout_marginEnd="20dp"
-          android:orientation="horizontal"
+          android:textColor="@color/black"
+          android:textSize="25sp"
+          android:textStyle="bold"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent">
+          app:layout_constraintTop_toTopOf="parent"/>
 
-          <TextView
-            android:id="@+id/tv_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-          <ImageView
-            android:id="@+id/img_search"
-            android:layout_width="32dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom|center"
-            android:layout_marginStart="230dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_baseline_search_24" />
-        </LinearLayout>
+        <ImageView
+          android:id="@+id/img_search"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="bottom|center"
+          android:scaleType="centerInside"
+          android:layout_marginEnd="30dp"
+          android:layout_marginTop="10dp"
+          android:src="@drawable/icon_search_24"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
           android:id="@+id/tv_would_like_to_eat"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
-          android:text="What would you like to eat"
+          android:text="@string/what_would_you_like_to_eat"
           android:textColor="@color/black"
           android:textSize="20sp"
           android:textStyle="bold"
-          app:layout_constraintStart_toStartOf="@+id/header"
-          app:layout_constraintTop_toBottomOf="@id/header" />
+          app:layout_constraintStart_toStartOf="@+id/tv_home"
+          app:layout_constraintTop_toBottomOf="@id/tv_home" />
 
         <androidx.cardview.widget.CardView
           android:id="@+id/random_meal"
@@ -104,7 +98,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="18dp"
-          android:text="over popular items"
+          android:text="@string/over_popular_items"
           android:textColor="@color/black"
           android:textSize="20sp"
           android:textStyle="bold"
@@ -125,7 +119,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
-          android:text="category"
+          android:text="@string/category"
           android:textColor="@color/black"
           android:textSize="20sp"
           android:textStyle="bold"
@@ -143,8 +137,7 @@
           app:cardPreventCornerOverlap="false"
           app:cardUseCompatPadding="true"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/tv_category"
-          >
+          app:layout_constraintTop_toBottomOf="@id/tv_category">
 
           <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

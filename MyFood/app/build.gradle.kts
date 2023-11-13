@@ -85,4 +85,8 @@ dependencies {
 
   //Glide
   implementation("com.github.bumptech.glide:glide:$glide_version")
+
+  //Dagger
+  implementation("com.google.dagger:dagger:$daggerVersion")
+  ksp("com.google.dagger:dagger-compiler:$daggerVersion")
 }

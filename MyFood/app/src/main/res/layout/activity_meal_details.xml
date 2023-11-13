@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/details_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
-
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -68,9 +65,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="15dp"
-                    android:drawableLeft="@drawable/ic_category"
+                    android:drawableStart="@drawable/ic_category"
                     android:drawablePadding="5dp"
-                    android:text="Category : "
+                    android:text="@string/category_prefix"
                     android:textColor="@color/g_black"
                     android:textSize="14sp"
                     android:visibility="invisible" />
@@ -81,9 +78,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="15dp"
-                    android:drawableLeft="@drawable/ic_area"
+                    android:drawableStart="@drawable/ic_area"
                     android:drawablePadding="5dp"
-                    android:text="Area : "
+                    android:text="@string/area_prefix"
                     android:textColor="@color/g_black"
                     android:textSize="14sp"
                     android:visibility="invisible" />

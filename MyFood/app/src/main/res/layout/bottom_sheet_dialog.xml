@@ -32,8 +32,7 @@
             android:id="@+id/tv_meal_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_area"
-            android:text="awdawd"
+            android:drawableStart="@drawable/ic_area"
             android:layout_weight="1"
             android:textColor="@color/g_black"/>
 
@@ -41,8 +40,7 @@
             android:id="@+id/tv_meal_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_category"
-            android:text="adswad"
+            android:drawableStart="@drawable/ic_category"
             android:layout_weight="1"
             android:textColor="@color/g_black"/>
     </LinearLayout>
@@ -55,7 +53,6 @@
         app:layout_constraintStart_toEndOf="@id/img_category"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:text="testtest"
         android:textSize="18sp"
         android:textColor="@color/g_black"/>
 
@@ -68,8 +65,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:textColor="@color/g_black"
-        android:text="Read more ..."
-        android:textSize="18sp"
-        />
+        android:text="@string/read_more"
+        android:textSize="18sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

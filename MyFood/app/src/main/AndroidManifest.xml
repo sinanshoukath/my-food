@@ -22,6 +22,8 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:name="com.sinan.myfood.presentation.MealListActivity" />
+    <activity android:name="com.sinan.myfood.presentation.MealDetailsActivity" />
   </application>
 
 </manifest>
