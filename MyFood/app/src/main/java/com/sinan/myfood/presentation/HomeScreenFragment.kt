@@ -5,6 +5,7 @@
 
 package com.sinan.myfood.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,12 @@ import com.sinan.myfood.presentation.adapters.CategoryListAction
 import com.sinan.myfood.presentation.adapters.CategoryListAdapter
 import com.sinan.myfood.presentation.adapters.PopularMealsAction
 import com.sinan.myfood.presentation.adapters.PopularMealsAdapter
+import com.sinan.myfood.utils.CommonKeys.CATEGORY_NAME
+import com.sinan.myfood.utils.CommonKeys.MEAL_AREA
+import com.sinan.myfood.utils.CommonKeys.MEAL_ID
+import com.sinan.myfood.utils.CommonKeys.MEAL_NAME
+import com.sinan.myfood.utils.CommonKeys.MEAL_STR
+import com.sinan.myfood.utils.CommonKeys.MEAL_THUMB
 
 class HomeScreenFragment : Fragment() {
   private lateinit var homeScreenViewModel: HomeScreenViewModel
@@ -40,12 +47,18 @@ class HomeScreenFragment : Fragment() {
     homeScreenViewModel = ViewModelProvider(this)[HomeScreenViewModel::class.java]
     categoryListAdapter = CategoryListAdapter(object : CategoryListAction {
       override fun onCategoryClick(category: Category) {
-
+        val intent = Intent(activity, MealListActivity::class.java)
+        intent.putExtra(CATEGORY_NAME, category.strCategory)
+        startActivity(intent)
       }
     })
     popularMealsAdapter = PopularMealsAdapter(object : PopularMealsAction {
       override fun onMealClick(mealDetail: Meal) {
-
+        val intent = Intent(activity, MealDetailsActivity::class.java)
+        intent.putExtra(MEAL_ID, mealDetail.mealId)
+        intent.putExtra(MEAL_STR, mealDetail.strMeal)
+        intent.putExtra(MEAL_THUMB, mealDetail.strMealThumb)
+        startActivity(intent)
       }
 
       override fun onMealLongClick(mealDetail: Meal) {
@@ -84,7 +97,19 @@ class HomeScreenFragment : Fragment() {
     }
 
     homeScreenViewModel.mealsById.observe(viewLifecycleOwner) {
+      if (!it.isNullOrEmpty()) {
+        val mealItem = it[0]
+        val bottomSheetFragment = MealBottomDialog()
+        val bundle = Bundle()
+        bundle.putString(CATEGORY_NAME, mealItem.category)
+        bundle.putString(MEAL_AREA, mealItem.area)
+        bundle.putString(MEAL_NAME, mealItem.meal)
+        bundle.putString(MEAL_THUMB, mealItem.mealThumb)
+        bundle.putString(MEAL_ID, mealItem.mealId)
 
+        bottomSheetFragment.arguments = bundle
+        bottomSheetFragment.show(childFragmentManager, "BottomSheetDialog")
+      }
     }
   }
 }

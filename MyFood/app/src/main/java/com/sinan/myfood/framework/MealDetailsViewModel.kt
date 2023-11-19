@@ -57,7 +57,8 @@ class MealDetailsViewModel(application: Application): BaseViewModel(application)
     }
   }
 
-  fun isMealSaved(mealId: String): Boolean {
+  fun isMealSaved(mealId: String?): Boolean {
+    if (mealId == null) return false
     var meal: MealDetail? = null
     launch {
       runBlocking(Dispatchers.IO) {

@@ -14,4 +14,6 @@
   <string name="over_popular_items">over popular items</string>
   <string name="category">category</string>
   <string name="no_meals_in_this_category">No meals in this category</string>
+  <string name="favorite">Favorite</string>
+  <string name="category_title">Category</string>
 </resources>

@@ -25,6 +25,11 @@ class PopularMealsAdapter(val popularMealsAction: PopularMealsAction): RecyclerV
       itemView.setOnClickListener {
         popularMealsAction.onMealClick(meal)
       }
+
+      itemView.setOnLongClickListener {
+        popularMealsAction.onMealLongClick(meal)
+        true
+      }
     }
   }
 

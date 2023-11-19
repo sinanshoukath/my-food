@@ -11,7 +11,7 @@ interface UserDataSource {
   suspend fun insertFavorite(meal: MealDetail)
   suspend fun updateFavorite(meal: MealDetail)
   suspend fun getAllMeals(): List<MealDetail>
-  suspend fun getMealById(id: String): MealDetail
+  suspend fun getMealById(id: String): MealDetail?
   suspend fun deleteMealById(id: String)
   suspend fun deleteMeal(meal: MealDetail)
 }

@@ -22,7 +22,7 @@ class RoomUserDataSource(context: Context): UserDataSource {
     return mealsDao.getAllSavedMeals().map { MealDetail(it.mealId.toString(), it.mealCountry, it.mealCategory, it.mealInstruction, it.mealName, it.mealThumb, it.mealYoutubeLink) }
   }
 
-  override suspend fun getMealById(id: String): MealDetail {
+  override suspend fun getMealById(id: String): MealDetail? {
     return getMealDetail(mealsDao.getMealById(id))
   }
 
@@ -35,7 +35,9 @@ class RoomUserDataSource(context: Context): UserDataSource {
       mealDetail.category, mealDetail.instructions, mealDetail.mealThumb, mealDetail.youtube)
   }
 
-  private fun getMealDetail(mealEntity: MealEntity): MealDetail {
-    return MealDetail(mealEntity.mealId.toString(), mealEntity.mealCountry, mealEntity.mealCategory, mealEntity.mealInstruction, mealEntity.mealName, mealEntity.mealThumb, mealEntity.mealYoutubeLink)
+  private fun getMealDetail(mealEntity: MealEntity?): MealDetail? {
+    return mealEntity?.let { MealDetail(mealEntity.mealId.toString(), mealEntity.mealCountry,
+      mealEntity.mealCategory, mealEntity.mealInstruction, mealEntity.mealName, mealEntity.mealThumb,
+      mealEntity.mealYoutubeLink) }
   }
 }
