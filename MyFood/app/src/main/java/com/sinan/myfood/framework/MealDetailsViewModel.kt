@@ -10,9 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import com.sinan.core.data.MealDetail
 import com.sinan.myfood.framework.di.ApplicationModule
 import com.sinan.myfood.framework.di.DaggerViewModelComponent
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class MealDetailsViewModel(application: Application): BaseViewModel(application) {
@@ -22,6 +20,7 @@ class MealDetailsViewModel(application: Application): BaseViewModel(application)
   val mealDetailsList = MutableLiveData<List<MealDetail>>()
   val mealDetailsListBottom = MutableLiveData<List<MealDetail>>()
   val allMeals = MutableLiveData<List<MealDetail>>()
+  val isMealSaved = MutableLiveData<Boolean>()
 
   init {
     DaggerViewModelComponent.builder()
@@ -57,15 +56,13 @@ class MealDetailsViewModel(application: Application): BaseViewModel(application)
     }
   }
 
-  fun isMealSaved(mealId: String?): Boolean {
-    if (mealId == null) return false
-    var meal: MealDetail? = null
-    launch {
-      runBlocking(Dispatchers.IO) {
-        meal = useCases.getUserMealById(mealId)
+  fun isMealSaved(mealId: String?) {
+    if (mealId != null) {
+      launch {
+        val meal = useCases.getUserMealById(mealId)
+        isMealSaved.postValue(meal != null)
       }
     }
-    return meal != null
   }
 
   fun deleteMealById(mealId: String){

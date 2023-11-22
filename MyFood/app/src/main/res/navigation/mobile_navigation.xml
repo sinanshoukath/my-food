@@ -13,52 +13,20 @@
     <action
       android:id="@+id/action_homeFragment_to_searchFragment"
       app:destination="@id/searchFragment" />
-    <!--<action
-      android:id="@+id/action_homeFragment_to_mealLisActivity"
-      app:destination="@id/mealListActivity" />-->
   </fragment>
   <fragment
     android:id="@+id/favoriteMeals"
+    android:name="com.sinan.myfood.presentation.FavoriteFragment"
     android:label="fragment_favorite_meals"
     tools:layout="@layout/fragment_favorite_meals" />
   <fragment
     android:id="@+id/categoryFragment"
+    android:name="com.sinan.myfood.presentation.CategoryFragment"
     android:label="fragment_category"
     tools:layout="@layout/fragment_category">
-    <!--<action
-      android:id="@+id/action_categoryFragment_to_mealLisActivity"
-      app:destination="@id/mealListActivity" />-->
   </fragment>
   <fragment
     android:id="@+id/searchFragment"
     android:label="fragment_search"
     tools:layout="@layout/fragment_search" />
-
-  <!--<activity
-    android:id="@+id/mealListActivity"
-    android:label="activity_meal_list"
-    tools:layout="@layout/activity_meal_list">
-    <argument
-      android:name="category_name"
-      app:argType="string"
-      android:defaultValue="beef"/>
-  </activity>
-
-  <activity
-    android:id="@+id/mealDetailsActivity"
-    android:label="activity_meal_details"
-    tools:layout="@layout/activity_meal_details">
-    <argument
-      android:name="meal_id"
-      app:argType="string"
-      android:defaultValue=""/>
-    <argument
-      android:name="meal_name"
-      app:argType="string"
-      android:defaultValue=""/>
-    <argument
-      android:name="meal_thumb"
-      app:argType="string"
-      android:defaultValue=""/>
-  </activity>-->
 </navigation>

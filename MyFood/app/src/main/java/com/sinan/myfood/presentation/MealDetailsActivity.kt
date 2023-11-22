@@ -29,6 +29,7 @@ class MealDetailsActivity: AppCompatActivity() {
   private var mealThumb: String? = null
   private var youtubeUrl: String? = null
   private var mealDetail: MealDetail? = null
+  private var isMealSaved = false
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -39,19 +40,14 @@ class MealDetailsActivity: AppCompatActivity() {
     mealStr = intent.getStringExtra(CommonKeys.MEAL_STR)
     mealThumb = intent.getStringExtra(CommonKeys.MEAL_THUMB)
 
-    Logger.log("mealId $mealId")
-    Logger.log("mealStr $mealStr")
-    Logger.log("mealThumb $mealThumb")
-
     setUpViewWithMealInformation()
-    setFloatingButtonStatus()
 
     binding.imgYoutube.setOnClickListener {
       youtubeUrl?.let { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(youtubeUrl))) }
     }
 
     binding.btnSave.setOnClickListener {
-      if(isMealSavedInDatabase()){
+      if(isMealSaved){
         mealId?.let { mealDetailsViewModel.deleteMealById(it) }
         binding.btnSave.setImageResource(R.drawable.ic_baseline_save_24)
         Snackbar.make(
@@ -68,14 +64,21 @@ class MealDetailsActivity: AppCompatActivity() {
       }
     }
 
-    mealId?.let { mealDetailsViewModel.getMealById(it) }
+    mealId?.let {
+      mealDetailsViewModel.getMealById(it)
+      mealDetailsViewModel.isMealSaved(it)
+    }
     observeMealDetail()
   }
 
   private fun observeMealDetail() {
     mealDetailsViewModel.mealDetailsList.observe(this) {
-      Logger.log("size " + it.size)
       if (!it.isNullOrEmpty()) setMealInfo(it[0])
+    }
+
+    mealDetailsViewModel.isMealSaved.observe(this) {
+      isMealSaved = it
+      setFloatingButtonStatus(it)
     }
   }
 
@@ -88,12 +91,8 @@ class MealDetailsActivity: AppCompatActivity() {
     }
   }
 
-  private fun setFloatingButtonStatus() {
-    binding.btnSave.setImageResource(if (isMealSavedInDatabase()) R.drawable.ic_saved else R.drawable.ic_baseline_save_24)
-  }
-
-  private fun isMealSavedInDatabase(): Boolean {
-    return mealDetailsViewModel.isMealSaved(mealId)
+  private fun setFloatingButtonStatus(isMealSaved: Boolean) {
+    binding.btnSave.setImageResource(if (isMealSaved) R.drawable.ic_saved else R.drawable.ic_baseline_save_24)
   }
 
   private fun saveMeal() {

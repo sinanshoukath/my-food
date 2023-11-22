@@ -7,6 +7,9 @@ package com.sinan.myfood.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sinan.myfood.R
 
 class MainActivity : AppCompatActivity() {
@@ -14,5 +17,9 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+
+    val navView = this.findNavController(R.id.fragmentContainerView)
+    val bottomNavView = findViewById<BottomNavigationView>(R.id.nav_view)
+    bottomNavView.setupWithNavController(navView)
   }
 }
