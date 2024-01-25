@@ -5,10 +5,9 @@
 
 package com.sinan.core.usecase
 
-import com.sinan.core.data.Meal
 import com.sinan.core.data.MealDetail
-import com.sinan.core.repository.UserDataRepository
+import com.sinan.core.repository.MealRepository
 
-class DeleteMeal(val repository: UserDataRepository) {
+class DeleteMeal(val repository: MealRepository) {
   suspend operator fun invoke(meal: MealDetail) = repository.deleteMeal(meal)
 }

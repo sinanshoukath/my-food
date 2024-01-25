@@ -12,7 +12,7 @@ import com.sinan.myfood.framework.MealListViewModel
 import com.sinan.myfood.framework.SearchViewModel
 import dagger.Component
 
-@Component(modules = [ApplicationModule::class, RemoteDataRepositoryModule::class, UserDataRepositoryModule::class, UseCasesModule::class])
+@Component(modules = [ApplicationModule::class, MealRepositoryModule::class, UseCasesModule::class])
 interface ViewModelComponent {
   fun inject(homeScreenViewModel: HomeScreenViewModel)
   fun inject(mealListViewModel: MealListViewModel)

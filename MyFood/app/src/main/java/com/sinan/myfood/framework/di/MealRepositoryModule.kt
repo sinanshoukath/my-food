@@ -6,13 +6,14 @@
 package com.sinan.myfood.framework.di
 
 import android.app.Application
-import com.sinan.core.repository.UserDataRepository
+import com.sinan.core.repository.MealRepository
+import com.sinan.core.service.FoodAPIDataSource
 import com.sinan.myfood.framework.RoomUserDataSource
 import dagger.Module
 import dagger.Provides
 
 @Module
-class UserDataRepositoryModule {
+class MealRepositoryModule {
   @Provides
-  fun providesUserDataRepositoryModule(application: Application) = UserDataRepository(RoomUserDataSource(application))
+  fun providesMealRepository(application: Application) = MealRepository(RoomUserDataSource(application), FoodAPIDataSource())
 }

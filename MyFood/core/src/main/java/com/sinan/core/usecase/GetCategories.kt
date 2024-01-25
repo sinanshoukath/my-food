@@ -5,8 +5,8 @@
 
 package com.sinan.core.usecase
 
-import com.sinan.core.repository.RemoteDataRepository
+import com.sinan.core.repository.MealRepository
 
-class GetCategories(val repository: RemoteDataRepository) {
+class GetCategories(val repository: MealRepository) {
   suspend operator fun invoke() = repository.getCategories()
 }

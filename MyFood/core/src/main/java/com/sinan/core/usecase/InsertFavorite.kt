@@ -5,10 +5,9 @@
 
 package com.sinan.core.usecase
 
-import com.sinan.core.data.Meal
 import com.sinan.core.data.MealDetail
-import com.sinan.core.repository.UserDataRepository
+import com.sinan.core.repository.MealRepository
 
-class InsertFavorite(val repository: UserDataRepository) {
+class InsertFavorite(val repository: MealRepository) {
   suspend operator fun invoke(meal: MealDetail) = repository.insertFavorite(meal)
 }

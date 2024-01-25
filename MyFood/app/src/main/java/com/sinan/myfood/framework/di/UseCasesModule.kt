@@ -5,8 +5,7 @@
 
 package com.sinan.myfood.framework.di
 
-import com.sinan.core.repository.RemoteDataRepository
-import com.sinan.core.repository.UserDataRepository
+import com.sinan.core.repository.MealRepository
 import com.sinan.core.usecase.DeleteMeal
 import com.sinan.core.usecase.DeleteMealById
 import com.sinan.core.usecase.GetAllMeals
@@ -26,19 +25,19 @@ import dagger.Provides
 class UseCasesModule {
 
   @Provides
-  fun getUseCases(userDataRepository: UserDataRepository, remoteDataRepository: RemoteDataRepository): UseCases {
+  fun getUseCases(mealRepository: MealRepository): UseCases {
     return UseCases(
-      GetAllMeals(userDataRepository),
-      GetCategories(remoteDataRepository),
-      GetMealById(remoteDataRepository),
-      GetMealByName(remoteDataRepository),
-      GetMealsByCategory(remoteDataRepository),
-      GetRandomMeals(remoteDataRepository),
-      GetUserMealById(userDataRepository),
-      InsertFavorite(userDataRepository),
-      UpdateFavorite(userDataRepository),
-      DeleteMeal(userDataRepository),
-      DeleteMealById(userDataRepository)
+      GetAllMeals(mealRepository),
+      GetCategories(mealRepository),
+      GetMealById(mealRepository),
+      GetMealByName(mealRepository),
+      GetMealsByCategory(mealRepository),
+      GetRandomMeals(mealRepository),
+      GetUserMealById(mealRepository),
+      InsertFavorite(mealRepository),
+      UpdateFavorite(mealRepository),
+      DeleteMeal(mealRepository),
+      DeleteMealById(mealRepository)
     )
   }
 }
